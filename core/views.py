@@ -143,10 +143,11 @@ def send_message(request, id):
     if not are_friends(request.user, friend):
         return redirect("home")
 
-    message = request.POST.get("message")
+    message = request.POST.get("message") or ""
     snap = request.FILES.get("image")
 
     if message or snap:
+        chat = get_or_create_chat(request.user, friend)
         Message.objects.create(
             sender=request.user, reciever=friend, text=message, image=snap
         )
