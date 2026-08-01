@@ -4,10 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pillow = "*"
 django = "*"
+pillow = "*"
+djangorestframework = "*"
+channels = {extras = ["daphne"], version = "*"}
+types-channels = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.13"
+python_version = "3.12"
